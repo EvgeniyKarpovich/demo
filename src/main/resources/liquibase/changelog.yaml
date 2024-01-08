@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: changesets/create-users.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: changesets/create-token.yaml
+      relativeToChangelogFile: true
