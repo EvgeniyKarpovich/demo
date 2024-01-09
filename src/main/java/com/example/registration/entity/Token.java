@@ -7,7 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-@Table(name = "tokens", schema = "security")
+@Table(name = "tokens", schema = "auth")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Token {
