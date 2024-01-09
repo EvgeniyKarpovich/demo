@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-@Table(name = "users", schema = "security")
+@Table(name = "users", schema = "auth")
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
@@ -19,12 +19,37 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Embedded
-    private PersonalInfo personalInfo;
+    @Column(name = "firstname", nullable = false)
+    private String firstname;
+
+    @Column(name = "lastname", nullable = false)
+    private String lastname;
+
+    @Column(name = "middlename", nullable = false)
+    private String middlename;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Passport passport;
+
+    @Column(name = "tel_number ", nullable = false, unique = true)
+    private String telNumber;
+
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
     @Column(name = "password", nullable = false)
-    private boolean registered;
-    
+    private String password;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Credentials credentials;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private UserRegistrationState userRegistrationState;
+
+
     @OneToMany(mappedBy = "user")
     private List<Token> tokens = new ArrayList<>();
 }
