@@ -24,7 +24,7 @@ public class User {
 
     @Column(name = "password", nullable = false)
     private boolean registered;
-
+    
     @OneToMany(mappedBy = "user")
     private List<Token> tokens = new ArrayList<>();
 }
