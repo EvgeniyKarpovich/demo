@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Builder
-@Table(name = "user_registration_state", schema = "auth")
+@Table(name = "user_registration_state", schema = "user")
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserRegistrationState {
@@ -17,9 +17,6 @@ public class UserRegistrationState {
     @Id
     @Column(name = "user_id")
     private Long id;
-
-    @Column(name = "registered", nullable = false)
-    private boolean registered;
 
     @Column(name = "sent_code_time", nullable = false)
     private LocalDateTime sentCodeTime;

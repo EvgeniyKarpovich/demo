@@ -9,11 +9,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "passports", schema = "auth")
+@Table(name = "passports", schema = "user")
 public class Passport {
 
     @Id
-    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "series", nullable = false)
@@ -22,8 +22,7 @@ public class Passport {
     @Column(name = "number", nullable = false)
     private String number;
 
-    @OneToOne
-    @MapsId
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 }
